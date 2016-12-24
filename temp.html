@@ -1,0 +1,66 @@
+<style type="text/css">
+<!--
+.style12 {font-size: 18px}
+.style13 {font-size: 16px}
+.style2 {font-size: 24px}
+.style9 {color: #333333}
+-->
+</style>
+<table width="850" border="0" cellspacing="1" style="margin-left: 25px;">
+  <tr>
+    <td height="56" colspan="4" ><p align="center" class="style2"> Comments </p></td>
+  </tr>
+  <tr>
+    <td width="123" height="48" bgcolor="#EDEBEB"><div align="center" class="style13 style9"><strong>User Name</strong></div></td>
+    <td width="112" height="48" bgcolor="#EDEBEB"><div align="center" class="style9 style13"><strong>Name</strong></div></td>
+    <td width="164" height="48" bgcolor="#EDEBEB"><div align="center" class="style13 style9"><strong>E-Mail</strong></div></td>
+    <td width="438" height="48" bgcolor="#EDEBEB"><div align="center" class="style13 style9"><strong>Comment</strong></div></td>
+  </tr>
+  <?php
+include("connect.php");
+$query = "SELECT * FROM comments";
+$query_run = mysql_query($query);
+		while($query_row = mysql_fetch_assoc($query_run)) 
+		{
+			$username = $query_row['username'];
+			$name = $query_row['fname'];
+			$email = $query_row['email'];
+			$comment = $query_row['comment'];
+  
+?>
+  <tr>
+    <td height="51" bgcolor="#EDEBEB"><div align="center" class="style9 style13">&nbsp;<?php echo $username?></div></td>
+    <td height="51" bgcolor="#EDEBEB"><div align="center" class="style9 style13">&nbsp;<?php echo $name?></div></td>
+    <td height="51" bgcolor="#EDEBEB"><div align="center" class="style9 style13">&nbsp;<?php echo $email?></div></td>
+    <td height="51" bgcolor="#EDEBEB"><div align="left" class="style9 style11">&nbsp;
+            <div align="center"><?php echo $comment?></div>
+    </div></td>
+  </tr>
+  <?php
+		}
+?>
+  <tr>
+    <td height="20" colspan="3" bgcolor="">&nbsp;</td>
+    <td height="20" bgcolor="">&nbsp;</td>
+  </tr>
+</table>
+<table width="850" border="0" cellspacing="0" style="margin-left: 25px;">
+  <tr>
+    <td width="397" height="110" bgcolor="#EDEBEB"><div align="center"><span class="style12">Post your  Comment here. . . </span></div></td>
+    <td width="28" bgcolor="#EDEBEB">&nbsp;</td>
+    <td width="482" bgcolor="#EDEBEB"><textarea name="comment" cols="50" rows="4" ></textarea></td>
+  </tr>
+</table>
+<table width="850" border="0" cellspacing="0" style="margin-left: 25px;">
+  <tr>
+    <td width="436" height="46" bgcolor="#EDEBEB"><div align="right">
+      <label>
+        <input type="submit" name="Post" value="Post" />
+        </label>
+    </div></td>
+    <td width="15" bgcolor="#EDEBEB">&nbsp;</td>
+    <td width="460" bgcolor="#EDEBEB"><input type="reset" name="Submit2" value="Clear" /></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

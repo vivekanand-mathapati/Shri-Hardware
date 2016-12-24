@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Truly Simple</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<link href="css/tuelySimple.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrap">
+  <div id="top">
+    <h2> <a href="http://www.free-css.com/">Truly Simple</a></h2>
+    <div id="menu">
+      <ul>
+        <li><a href="index.html" class="current">Purchage</a></li>
+        <li><a href="index1.html">Sales</a></li>
+        <li><a href="http://www.free-css.com/">Stock</a></li>
+        <li><a href="http://www.free-css.com/">Reports</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="content">
+    
+    <div id="right">
+      <div class="box">
+        <h1>ADMIN LOGIN</h1>
+        <h2>Please enter the following information </h2>
+        <p>The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non characteristic words generators on the Internet. </p>
+        <p> <a href="http://www.free-css.com/">Read more about us</a></p>
+        <h2>&nbsp;</h2>
+      </div>
+    </div>
+    <div id="clear"></div>
+  </div>
+  <div id="footer">
+    <p>Copyright 2006 Truly Simple. Design by <a href="http://www.colorlightstudio.com">Igor Penjivrag</a></p>
+  </div>
+</div>
+</body>
+</html>

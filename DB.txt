@@ -1,0 +1,125 @@
+create table adminLogin(username varchar(15),name varchar(15),password varchar(15));
+insert into adminLogin values('psp123','Parashuram','psp123');
+
+customercreate
+----------------
+create table CustomerDetail(id varchar(15) primary key,name varchar(20),address varchar(50),phone varchar(10),email varchar(20),countcid int(15))
+
+createVendor
+------------
+create table VendorDetail(id varchar(15) primary key,tin varchar(10),name varchar(20),address varchar(50),phone varchar(10),email varchar(20),vendcount int(10))
+
+createProduct
+--------------
+create table productDetail(id varchar(15) primary key,name varchar(20),ratePerUnit int(10),description varchar(50),validity varchar(20), prdcount int(10));
+
+create purchasedetail
+----------------------
+
+create table masterpurchasedetail 
+(date varchar(15),
+vid varchar(20),
+ponumber varchar(20),
+pocount int(11),
+primary key(ponumber),
+FOREIGN KEY (vid) REFERENCES vendordetail(id) ON update CASCADE on delete cascade )
+
+create table subpurchasedetail
+(ponumber varchar(20),
+part varchar(20),
+rate varchar(20),
+quant varchar(20),
+primary key(ponumber,part),
+foreign key(ponumber) references masterpurchasedetail(ponumber) on update cascade on delete cascade)
+
+create table sub1purchasedetail 
+(ponumber varchar(20),
+vat varchar(20),
+ptype varchar(10),
+totamt varchar(15),
+amtpaid varchar(15),
+balamt varchar(15),
+remarks varchar(15),
+foreign key(ponumber) references masterpurchasedetail(ponumber) on update cascade on delete cascade)
+
+create salesdetail
+---------------------
+
+create table mastersales
+(date varchar(15),
+invoiceno varchar(20) primary key,
+icount varchar(11))
+
+create table debitsales
+(invoiceno varchar(20),
+customername varchar(50),
+contact varchar(11),
+vat varchar(20),
+totamt varchar(15),
+remarks varchar(100),
+primary key(invoiceno,customername),
+foreign key(invoiceno) references mastersales(invoiceno) on update cascade on delete cascade)
+
+create table creditsales
+(invoiceno varchar(20),
+custid varchar(50),
+vat varchar(20),
+totamt varchar(50),
+amtpaid varchar(50),
+remarks varchar(100),
+primary key(invoiceno,custid),
+foreign key(custid) references CustomerDetail(id) on update cascade on delete cascade,
+foreign key(invoiceno) references mastersales(invoiceno) on update cascade on delete cascade)
+
+create table salesparticulerdetail
+(invoiceno varchar(20),
+part varchar(20),
+rate varchar(20),
+quant varchar(20),
+primary key(invoiceno,part),
+foreign key(invoiceno) references mastersales(invoiceno) on update cascade on delete cascade)
+select date,invoiceno from mastersales where invoiceno='INVSNO.0001'
+
+select CD.name,CD.phone,C.totamt,C.amtpaid from mastersales M,creditsales C, customerdetail CD where M.invoiceno=C.invoiceno and C.custid=CD.id and M.invoiceno='INVSNO.0001'
+
+select M.invoiceno,P.part,P.quant from mastersales M,creditsales C,salesparticulerdetail P where M.invoiceno=C.invoiceno and C.invoiceno=P.invoiceno and M.invoiceno='INVSNO.0001'
+
+select D.customername,D.contact from mastersales M,debitsales D where D.invoiceno=M.invoiceno and M.invoiceno='INVSNO.0001'
+
+select date,count(part) from salesparticulerdetail S,mastersales M where M.invoiceno=S.invoiceno and part='TV' and date between '12/8/2013' and '12/8/2013' group by(date)
+
+
+
+
+User Registration
+----------------------
+create table registeredUsers(fname varchar(15),
+lname varchar(15),
+username varchar(15) primary key,
+email varchar(25),
+password varchar(10),
+cpass varchar(10),
+hint varchar(50),
+ans varchar(15));
+
+Comments
+-------------------------
+CREATE TABLE comments(
+username varchar(15) ,
+fname varchar(15) ,
+email varchar(25) ,
+comment varchar(100),
+foreign key(username) REFERENCES registeredusers(username) ON DELETE CASCADE );
+
+stock availability
+-----------------------
+
+create table stockavail
+( pid1 varchar(15),
+count int(15),
+foreign key(pid1) REFERENCES productDetail(id) ON DELETE CASCADE )
+
+update stockavail set count=count+1 where
+
+select name,count from productdetail P,stockavail S where P.id=S.pid1 
+------------------------------------------
